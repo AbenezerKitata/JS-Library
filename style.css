@@ -1,0 +1,115 @@
+:root{
+    background-color: cornflowerblue;
+    height: 100%;
+    width: 100%;
+    --color: rgba(54, 70, 4, 0.815);
+}
+body{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    background-color: rgba(18, 26, 41, 0.103);
+
+
+}
+header{
+    padding: 10px;
+    color: var(--color);
+}
+header>h1{
+    font-size: 40px;
+}
+article>h3{
+    width: fit-content;
+    background-color: rgba(72, 107, 173, 0.157);
+    padding: 10px;
+    color: var(--color);
+}
+form{
+    margin: 0 auto;
+    width: 400px;
+}
+form>div{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+label{
+    padding-right: 10px;
+    color: var(--color);
+    
+}
+/* --------------checkbox--------------------- */
+
+input[type="checkbox"] {
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid #eee;
+    /* Adjusts the position of the checkboxes on the text baseline */
+    position: relative;
+    right: 175px;
+    /* Set here so that Windows' High-Contrast Mode can override */
+    color: var(--color);
+    background-color: #eee;
+  }
+  
+  input[type="checkbox"]::before {
+    content: "✔";
+    position: absolute;
+    font-size: 1.5em;
+    right: -0.1px;
+    top: -0.1em;
+    visibility: hidden;
+  }
+  
+  input[type="checkbox"]:checked::before {
+    /* Use `visibility` instead of `display` to avoid recalculating layout */
+    visibility: visible;
+  }
+  
+  input[type="checkbox"]:disabled {
+    border-color: black;
+    background: #ddd;
+    color: gray;
+  }
+  
+/* ------------------------------------------------- */
+input{
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+            border: 1px solid #eee
+    
+    
+}
+button{
+    width: 80px;
+    height: 30px;
+    position: relative;
+    left: 150px;
+    background-color: var(--color);
+    border: 1px solid var(--color);
+    color: azure;
+}
+button:active{
+    background-color: var(--color);
+}
+.big-box{
+    width: 150px;
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(80px);
+    grid-template-rows: repeat(200px);
+    align-items:center ;
+    justify-content: center;
+    background-color: rgb(137, 139, 144);
+    border: 2px solid gold;
+}
+.card{
+    width: 100px;
+    border: 1p solid rgb(66, 82, 12);
+}
