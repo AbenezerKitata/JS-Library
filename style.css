@@ -109,11 +109,14 @@ table{
     border: 2px solid var(--color);
     min-width: 400px;
     visibility: hidden;
+    padding: 1px;
 }
 td,th{
     border: 2px solid var(--color);
     color: #ddd;
     background-color: var(--color);
+    padding: 2px;
+
 
 }
 .Delete-btn{
@@ -124,6 +127,6 @@ td,th{
 }
 select{
     background-color: var(--color);
-    border: 2px green;
+    border: unset;
     color: #ddd;
 }
