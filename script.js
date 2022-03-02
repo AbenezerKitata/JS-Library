@@ -1,63 +1,84 @@
-let myLibrary = [];
-let btn = document.querySelector(".btn");
-btn.addEventListener("click", addBookToLibrary);
 function makeReadYes() {
   if (document.querySelector("#isRead").checked) {
-    document.querySelector("#isRead").value = "Read already";
+    document.querySelector("#isRead").value = "Read";
   } else {
-    document.querySelector("#isRead").value = "Not Read Yet";
+    document.querySelector("#isRead").value = "Not Read";
   }
 }
-function Book() {
-  // my constructor
-}
-Book.prototype.info = function () {
-  return `The book ${this.title} was written by ${this.author} and has ${this.pageCt} pages. It's ${this.isRead}. `;
-};
+let myLibrary = [];
 
-function addBookToLibrary(e) {
-  e.preventDefault();
-  makeReadYes();
-  console.log(`my lib 1= ${myLibrary}`);
-  myLibrary.push(
-    document.querySelector("#title").value,
-    document.querySelector("#author").value,
-    Number(document.querySelector("#pageCt").value),
-    document.querySelector("#isRead").value
-  );
-  console.log(`my lib 2= ${myLibrary}`);
-  testfn();
-  while (myLibrary.length) { 
-    myLibrary.pop(); 
-}
-myLibrary = new Array()
-}
-function Test(title, author, pageCt, isRead) {
+function Book(title, author, pageCt, isRead) {
+  // the constructor...
   this.title = title;
   this.author = author;
   this.pageCt = pageCt;
   this.isRead = isRead;
 }
-Test.prototype = Object.create(Book.prototype);
+function addBookToLibrary() {
+  let addButton = document.querySelector(".btn");
+  addButton.addEventListener(`click`, (e) => {
+    e.preventDefault();
+    makeReadYes();
+    let mybook = new Book(
+      document.querySelector("#title").value,
+      document.querySelector("#author").value,
+      Number(document.querySelector("#pageCt").value),
+      document.querySelector("#isRead").value
+    );
+    myLibrary.push(mybook);
+    looper();
+  });
+}
+addBookToLibrary();
 
-let testfn = function () {
-  let counter = 0;
-  console.log(`counter1 = ${counter}`);
+function looper() {
+  // loop through  [myLibrary] and display every object on a table or cards.
+  let table = document.querySelector("table");
+  table.style.visibility = `visible`;
+  let row2 = document.createElement("tr");
+  table.appendChild(row2);
+  let tableData1 = document.createElement("td");
+  let tableData2 = document.createElement("td");
+  let tableData3 = document.createElement("td");
+  let tableData4 = document.createElement("td");
+  let tableData5 = document.createElement("td");
+  let tr = document.querySelectorAll('tr')
+  tableData5.style.backgroundColor = 'rgba(54, 70, 4, 0.815)'
+  let delBtn = document.createElement('input');
+  delBtn.type = 'button'
+  delBtn.value = 'Delete'
+  tableData5.appendChild(delBtn)
 
-  if (counter > 0) {
-    div.parentNode.removeChild(div)
-  }
-  let div = document.createElement("div");
-  div.className = "big-box";
-  document.body.appendChild(div);
-  let card = document.createElement("div");
-  div.appendChild(card);
-  card.className = "card";
-  counter++;
-  console.log(`counter2 = ${counter}`);
-  myLibrary = new Test(myLibrary[0],myLibrary[1],myLibrary[2],myLibrary[3]);
-    card.textContent = myLibrary.info();
-    // console.log(`iterator = ${myLibrary}`);
-};
+  delBtn.className = 'Delete-btn'
+  delBtn.textContent = 'delete'
+  delBtn.addEventListener('click',(e)=>{
+    e.preventDefault();
+    delBtn.parentNode.parentNode.parentNode.removeChild(row2)
+    if (tr.length === 2) {
+      table.style.visibility = `hidden`
+    }
+  });
+  let selectRead = document.createElement('select');
+  let read_option = document.createElement('option');
+  let unread_option = document.createElement('option');
+  read_option.textContent = 'Read'
+  read_option.value = 'Read'
+  unread_option.textContent = 'Not Read'
+  unread_option.value = 'Not Read'
+  selectRead.appendChild(read_option);
+  selectRead.appendChild(unread_option);
+  tableData4.appendChild(selectRead);
+  row2.appendChild(tableData1);
+  row2.appendChild(tableData2);
+  row2.appendChild(tableData3);
+  row2.appendChild(tableData4);
+  row2.appendChild(tableData5);
 
-// let boon = [`kasjhkjafh`, `kjfasgjkfghdj`, 145468, `not read yet`]
+
+  myLibrary.forEach((book) => {
+    tableData1.textContent = book.title;
+    tableData2.textContent = book.author;
+    tableData3.textContent = book.pageCt;
+    selectRead.value = book.isRead;
+  });
+}
