@@ -116,6 +116,7 @@ td,th{
     color: #ddd;
     background-color: var(--color);
     padding: 2px;
+    width: 80px;
 
 
 }
@@ -124,6 +125,7 @@ td,th{
     background-color: var(--color);
     appearance: none;
     border: unset;
+    width: 80px;
 }
 select{
     background-color: var(--color);
