@@ -7,12 +7,14 @@ function makeReadYes() {
 }
 let myLibrary = [];
 
-function Book(title, author, pageCt, isRead) {
-  // the constructor...
-  this.title = title;
-  this.author = author;
-  this.pageCt = pageCt;
-  this.isRead = isRead;
+
+class Book {
+  constructor(title, author, pageCt, isRead){
+    this.title = title;
+    this.author = author;
+    this.pageCt = pageCt;
+    this.isRead = isRead;
+  }
 }
 function addBookToLibrary() {
   let addButton = document.querySelector(".btn");
