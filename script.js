@@ -1,3 +1,18 @@
+window.onload = function () {
+  console.log("start");
+  const starter = document.createElement("div");
+  document.body.appendChild(starter);
+  starter.style.width = "600px";
+  const button = document.createElement("button");
+  starter.appendChild(button);
+  button.textContent = "Add book";
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    button.parentNode.removeChild(button);
+    document.querySelector("main").style.visibility = "visible";
+  });
+};
+
 function makeReadYes() {
   if (document.querySelector("#isRead").checked) {
     document.querySelector("#isRead").value = "Read";

@@ -4,6 +4,9 @@
     width: 100%;
     --color: rgba(54, 70, 4, 0.815);
 }
+main{
+    visibility: hidden;
+}
 body{
     margin: 0 auto;
     display: flex;
